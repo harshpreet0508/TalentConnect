@@ -2,21 +2,23 @@ package com.talentconnect.models;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Document("jobRequest")
-@NoArgsConstructor
-@AllArgsConstructor
 public class JobRequest {
 
-	private int jobId;
+	@Id
+	@MongoId
+	private Long jobId;
 
-	private int reqNumber;
+	private Integer reqNumber;
 
 	private String grade;
 
@@ -26,9 +28,9 @@ public class JobRequest {
 
 	private String glCode;
 
-	private String fdUrl;
+	private String jdUrl;
 
-	private int reqNoOpenings;
+	private Integer reqNoOpenings;
 
 	private String hmName;
 
@@ -40,16 +42,18 @@ public class JobRequest {
 
 	private String goodToHaveSkillSet;
 
-	private int locationId;
+	private Integer locationId;
 
 	private String location;
 
 	private String designation;
 
+	 @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	private Date jobCreatedDate;
 
 	private String jobCreatedBy;
 
+	 @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
 	private Date jobLastUpdatedDate;
 
 	private String jobLastUpdatedBy;
