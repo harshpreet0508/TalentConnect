@@ -1,0 +1,21 @@
+<mat-toolbar color="primary"class="navbar" >
+    <div ><b>Talent Connect</b></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+      <Nav>
+      <a routerLink="/home">Dashboard</a>&nbsp;&nbsp;
+      <a routerLink="/admin">TA Admin</a> &nbsp;&nbsp;
+      <a routerLink="/hm">Hiring Manager</a>&nbsp;&nbsp;
+      <a routerLink="/panel">Panelist</a>&nbsp;&nbsp;
+      <a routerLink="/member">TA Member</a>&nbsp;&nbsp;
+      
+
+      </Nav>
+    <button color="primary" mat-button [matMenuTriggerFor]="menu" style="position: relative;right:-40%" >User</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Setting</button>
+  <button mat-menu-item>Logout</button>
+</mat-menu>
+
+    
+</mat-toolbar>    
+  

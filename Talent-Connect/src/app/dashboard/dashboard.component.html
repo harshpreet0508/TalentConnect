@@ -1,0 +1,15 @@
+<div class="divClass">
+  <mat-card class="example-card" (click)="navigate('admin')"  *ngFor="let card of cardImg">
+      <mat-card-header class="header-pos">
+        <mat-card-title>{{card.name}}</mat-card-title>
+        
+      </mat-card-header>
+      <mat-card-content>
+        <img src = "{{card.img}}" >
+      </mat-card-content>
+      
+    </mat-card>
+
+    </div>
+    
+    

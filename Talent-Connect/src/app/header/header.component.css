@@ -1,0 +1,16 @@
+.navbar{
+    justify-content: left;
+}
+span{
+    padding-right: 1rem;
+}
+.name{
+    justify-content: start;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover, a:active{
+    color: lightgray;
+}

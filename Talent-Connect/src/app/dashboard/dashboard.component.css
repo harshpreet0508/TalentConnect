@@ -1,0 +1,20 @@
+.example-card {
+    /*max-width: 500px; */
+    max-width: 300px;
+    cursor: pointer;
+    
+  }
+.divClass{
+  justify-content: space-around; display:flex;margin-top:120px; max-width: 100%;
+}  
+
+.header-pos{
+    justify-content:center;
+    /*background-color: rgb(30, 152, 227); */
+    padding-bottom: 1rem;
+    background-color: rgb(92, 79, 239);
+}   
+.img{
+  
+  max-width: 300px;
+}
