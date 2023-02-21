@@ -15,20 +15,24 @@ export class DashboardComponent {
   }
   cardImg: any[] = [
     {
-      'name': 'Admin',
-      'img': '/assets/adminc.png'
+      'name': 'TA-Admin',
+      'img': '/assets/adminc.png',
+      'url': 'admin'
     },
     {
       'name': 'Hiring Manager',
-      'img': '/assets/hiring5.png'
+      'img': '/assets/hiring5.png',
+      'url': 'hm'
     },
     {
       'name': 'Panelist',
-      'img': '/assets/panelistc2.png'
+      'img': '/assets/panelistc2.png',
+      'url':'panel'
     },
     {
       'name': 'TA-Member',
-      'img': '/assets/tamember.png'
+      'img': '/assets/tamember.png',
+      'url':'member'
     },
   ];
 }
