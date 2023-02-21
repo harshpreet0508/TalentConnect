@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.talentconnect.models.JobRequest;
 import com.talentconnect.service.TalentAcquisitionService;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/talentAcquisition")
 public class TalentAcquisitionController {
