@@ -7,10 +7,20 @@ import {   TaMemberHomeComponent} from './ta-member/ta-member-home/ta-member-hom
 import { PanelistHomeComponent } from './panelist/panelist-home/panelist-home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResourceComponent } from './ta-admin/resource/resource.component';
+import { JobRequestComponent } from './hiring-manager/job-request/job-request.component';
 const routes: Routes = [
   { path: 'home', component: DashboardComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'hm', component: HmHomepageComponent },
+  { path: 'hm', children: [
+    {
+        path: 'jobRequest',    
+        component: JobRequestComponent,
+    },
+    {
+      path:'', 
+      component: HmHomepageComponent,
+    },
+  ] },
   { path: 'admin',  children: [
     {
         path: 'resource',    

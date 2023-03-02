@@ -1,0 +1,21 @@
+table {
+    width: 50%;
+    }
+  .example-card {
+    font-size: 14px;
+    max-width: 300px;
+    cursor: pointer;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    background-color:#ff6600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 4px;
+    padding: 5px;
+    border-radius: 8px;
+  }
+  a:hover, a:active{
+    color: #222020;
+  }
