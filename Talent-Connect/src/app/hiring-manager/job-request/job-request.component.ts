@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-job-request',
@@ -10,7 +11,6 @@ export class JobRequestComponent {
   constructor() { }
   ngOnInit(): void {
   }
-
   registerForm = new FormGroup({
     reqno: new FormControl("", [Validators.required, Validators.pattern("^[0-9]{6}$")]),
     grade: new FormControl("", [Validators.required, Validators.pattern("[0-9]+"), Validators.min(25), Validators.max(35)]),
@@ -24,6 +24,20 @@ export class JobRequestComponent {
   registerSubmitted() {
     console.log(this.registerForm);
   }
+  getSelect1Value(skillset1: string): void {
+    if (skillset1 != '') {
+      $("#skillset2 option[value='" + skillset1 + "'").hide();
+      $("#skillset3 option[value='" + skillset1 + "'").hide();
+    }
+  }
+
+  getSelect2Value(skillset2: string): void {
+    if (skillset2 != '') {
+      $("#skillset3 option[value='" + skillset2 + "'").hide();
+    }
+  }
+
+
 
   get Reqno(): FormControl {
     return this.registerForm.get("reqno") as FormControl;
@@ -43,6 +57,7 @@ export class JobRequestComponent {
   get Hmname(): FormControl {
     return this.registerForm.get("hmname") as FormControl;
   }
-  
+
+
 }
 
