@@ -23,6 +23,8 @@ public class JobRequest {
 	private String grade;
 
 	private String hmmSId;
+	
+	private Integer hmemployeeId;
 
 	private String hmEmailId;
 
@@ -35,6 +37,8 @@ public class JobRequest {
 	private String hmName;
 
 	private String jobStatus;
+	
+	private String position;
 
 	private String primarySkillSet;
 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as $ from "jquery";
+import {HiringManagerService} from '../../services/hiringManager';
+import { HttpClient } from '@angular/common/http'; 
 
 @Component({
   selector: 'app-job-request',
@@ -8,21 +10,26 @@ import * as $ from "jquery";
   styleUrls: ['./job-request.component.css']
 })
 export class JobRequestComponent {
-  constructor() { }
+  constructor(private hm:HiringManagerService,private http: HttpClient) { }
   ngOnInit(): void {
   }
   registerForm = new FormGroup({
-    reqno: new FormControl("", [Validators.required, Validators.pattern("^[0-9]{6}$")]),
+    reqNumber: new FormControl(null,[Validators.required, Validators.pattern("^[0-9]{6}$")]),
     grade: new FormControl("", [Validators.required, Validators.pattern("[0-9]+"), Validators.min(25), Validators.max(35)]),
     position: new FormControl("", [Validators.required, Validators.pattern("[A-Za-z]+")]),
-    eid: new FormControl("", [Validators.required, Validators.pattern("^[0-9]{9}$")]),
-    email: new FormControl("", [Validators.required, Validators.pattern("^[a-z]+[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-    hmname: new FormControl("", [Validators.required, Validators.pattern("[A-Za-z]{3,}")]),
-    jobstatus: new FormControl("", [Validators.required])
+    hmemployeeId: new FormControl("", [Validators.required, Validators.pattern("^[0-9]{9}$")]),
+    hmEmailId: new FormControl("", [Validators.required, Validators.pattern("^[a-z]+[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+    hmName: new FormControl("", [Validators.required, Validators.pattern("[A-Za-z]{3,}")]),
+    jobStatus:new FormControl(""),
+    primarySkillSet:new FormControl(""),
+    secondarySkillSet:new FormControl(""),
+    goodToHaveSkillSet:new FormControl(""),
+    location:new FormControl(""),
   });
 
   registerSubmitted() {
-    console.log(this.registerForm);
+    this.http.post('http://localhost:8080/talentConnect/api/talentAcquisition/saveJobRequestDetails', this.registerForm.value).subscribe(status=> console.log(JSON.stringify(status)));
+    console.log("form submitted");
   }
   getSelect1Value(skillset1: string): void {
     if (skillset1 != '') {
@@ -38,9 +45,8 @@ export class JobRequestComponent {
   }
 
 
-
-  get Reqno(): FormControl {
-    return this.registerForm.get("reqno") as FormControl;
+  get reqNumber(): FormControl {
+    return this.registerForm.get("reqNumber") as FormControl;
   }
   get Grade(): FormControl {
     return this.registerForm.get("grade") as FormControl;
@@ -48,14 +54,14 @@ export class JobRequestComponent {
   get Position(): FormControl {
     return this.registerForm.get("position") as FormControl;
   }
-  get Eid(): FormControl {
-    return this.registerForm.get("eid") as FormControl;
+  get hmemployeeId(): FormControl {
+    return this.registerForm.get("hmemployeeId") as FormControl;
   }
-  get Email(): FormControl {
-    return this.registerForm.get("email") as FormControl;
+  get hmEmailId(): FormControl {
+    return this.registerForm.get("hmEmailId") as FormControl;
   }
-  get Hmname(): FormControl {
-    return this.registerForm.get("hmname") as FormControl;
+  get hmName(): FormControl {
+    return this.registerForm.get("hmName") as FormControl;
   }
 
 

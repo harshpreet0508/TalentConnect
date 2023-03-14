@@ -1,51 +1,53 @@
 export class JobRequest {
 
-	 jobId : number;
+	 jobId?: null | number;
 
-	 reqNumber : number;
+	 reqNumber?: null | number;
 
-	 grade : string;
+	 grade?: null | string;
 
-	 hmmSId  :  string;
+	 hmmSId?:  null | string;
 
-	 hmEmailId  :  string;
+	 hmemployeeId?: null | number;
 
-	 glCode  :  string;
+	 hmEmailId?:  null | string;
 
-	 jdUrl : string;
+	 glCode?:  null | string;
 
-	 reqNoOpenings : string;
+	 jdUrl?: null | string;
 
-	 hmName : string;
+	 reqNoOpenings?: null | string;
 
-	 jobStatus : string;
+	 hmName?: null | string;
 
-	 primarySkillSet : string;
+	 jobStatus?: null | string;
 
-	 secondarySkillSet : string;
+	 primarySkillSet?: null | string;
 
-	 goodToHaveSkillSet : string;
+	 secondarySkillSet?: null | string;
 
-	 locationId : number;
+	 goodToHaveSkillSet?: null | string;
 
-	 location : string;
+	 locationId?: null | number;
 
-	 designation : string;
+	 location?: null | string;
 
-	 jobCreatedDate : Date;
+	 designation?: null | string;
 
-	 jobCreatedBy : string;
+	 jobCreatedDate?: null | Date;
 
-	 jobLastUpdatedDate : Date;
+	 jobCreatedBy?: null | string;
 
-	 jobLastUpdatedBy : string;
+	 jobLastUpdatedDate?: null | Date;
 
-	 comments : string;
+	 jobLastUpdatedBy?: null | string;
 
-	 assigned : boolean;
+	 comments?: null | string;
 
-	 taResourceID : string;
+	 assigned?: null | boolean;
 
-	 taEmailID : string;
+	 taResourceID?: null | string;
+
+	 taEmailID?: null | string;
    
 }
