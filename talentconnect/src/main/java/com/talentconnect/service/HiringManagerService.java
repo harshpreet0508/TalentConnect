@@ -5,6 +5,8 @@ import java.util.OptionalLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
 import com.talentconnect.models.JobRequest;
@@ -19,7 +21,12 @@ public class HiringManagerService {
 
 		return mongoTemplate.findAll(JobRequest.class);
 	}
-
+	public List<JobRequest> getJobRequestDetailsByJobStatus(String jobStatus) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("jobStatus").is(jobStatus));
+		return mongoTemplate.find(query,JobRequest.class);
+		
+	}
 	public JobRequest saveJobRequestDetails(JobRequest jobRequestDetails) {
 
 		OptionalLong maxJobRequestID = mongoTemplate.findAll(JobRequest.class).stream()

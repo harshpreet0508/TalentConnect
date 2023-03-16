@@ -1,11 +1,6 @@
 table {
     width: 50%;
     }
-  .example-card {
-    font-size: 14px;
-    max-width: 300px;
-    cursor: pointer;
-  }
   a {
     text-decoration: none;
     color: white;
@@ -19,3 +14,4 @@ table {
   a:hover, a:active{
     color: #222020;
   }
+  

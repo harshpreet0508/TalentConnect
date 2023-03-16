@@ -22,8 +22,8 @@ public class HiringManagerController {
 	private HiringManagerService hiringManagerService;
 
 	@GetMapping("/getJobRequestsDetails")
-	public List<JobRequest> getJobRequestDetails() {
-		return hiringManagerService.getJobRequestDetails();
+	public List<JobRequest> getJobRequestDetails(@RequestParam String jobStatus) {
+		return hiringManagerService.getJobRequestDetailsByJobStatus(jobStatus);
 
 	}
 

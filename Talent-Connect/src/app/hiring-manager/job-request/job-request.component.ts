@@ -13,6 +13,7 @@ export class JobRequestComponent {
   constructor(private hm:HiringManagerService,private http: HttpClient) { }
   ngOnInit(): void {
   }
+  skills: string[] = ["AWS", "Angular", "Azure", "Bash/Shell/Powershell", "C#", "CSS", "C/C++", "Docker", "ETL", "GraphQL", "Java", "Kafka", "MongoDB", ".NET", "PHP", "Python","Salesforce","Selenium","Snowflake"];
   registerForm = new FormGroup({
     reqNumber: new FormControl(null,[Validators.required, Validators.pattern("^[0-9]{6}$")]),
     grade: new FormControl("", [Validators.required, Validators.pattern("[0-9]+"), Validators.min(25), Validators.max(35)]),
@@ -40,7 +41,14 @@ export class JobRequestComponent {
 
   getSelect2Value(skillset2: string): void {
     if (skillset2 != '') {
+      $("#skillset1 option[value='" + skillset2 + "'").hide();
       $("#skillset3 option[value='" + skillset2 + "'").hide();
+    }
+  }
+  getSelect3Value(skillset3: string): void {
+    if (skillset3 != '') {
+      $("#skillset1 option[value='" + skillset3 + "'").hide();
+      $("#skillset2 option[value='" + skillset3 + "'").hide();
     }
   }
 

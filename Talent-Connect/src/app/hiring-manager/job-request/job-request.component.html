@@ -14,9 +14,11 @@
             <div class="col-75">
                 <input type="text" id="reqNumber" class="form-control" formControlName="reqNumber"
                     placeholder="Enter Requisition No">
-                <div class="form-text text-danger" *ngIf="reqNumber.errors?.['required']&& (reqNumber.touched||reqNumber.dirty)">
+                <div class="form-text text-danger"
+                    *ngIf="reqNumber.errors?.['required']&& (reqNumber.touched||reqNumber.dirty)">
                     Requisition No is Required</div>
-                <div class="form-text text-danger" *ngIf="reqNumber.errors?.['pattern']  && (reqNumber.touched||reqNumber.dirty)">
+                <div class="form-text text-danger"
+                    *ngIf="reqNumber.errors?.['pattern']  && (reqNumber.touched||reqNumber.dirty)">
                     Please enter a 6 digit number</div>
             </div>
         </div>
@@ -59,9 +61,11 @@
             <div class="col-75">
                 <input type="text" id="eid" class="form-control" formControlName="hmemployeeId"
                     placeholder="Enter Hm Employee id">
-                <div class="form-text text-danger" *ngIf="hmemployeeId.errors?.['required']&& (hmemployeeId.touched||hmemployeeId.dirty)">Required
+                <div class="form-text text-danger"
+                    *ngIf="hmemployeeId.errors?.['required']&& (hmemployeeId.touched||hmemployeeId.dirty)">Required
                 </div>
-                <div class="form-text text-danger" *ngIf="hmemployeeId.errors?.['pattern'] && (hmemployeeId.touched||hmemployeeId.dirty)">Please
+                <div class="form-text text-danger"
+                    *ngIf="hmemployeeId.errors?.['pattern'] && (hmemployeeId.touched||hmemployeeId.dirty)">Please
                     enter 9 digit number</div>
             </div>
         </div>
@@ -73,9 +77,11 @@
             <div class="col-75">
                 <input type="email" id="hmEmailId" class="form-control" formControlName="hmEmailId"
                     placeholder="Enter Hm Email id">
-                <div class="form-text text-danger" *ngIf="hmEmailId.errors?.['required']&& (hmEmailId.touched||hmEmailId.dirty)">
+                <div class="form-text text-danger"
+                    *ngIf="hmEmailId.errors?.['required']&& (hmEmailId.touched||hmEmailId.dirty)">
                     Required</div>
-                <div class="form-text text-danger" *ngIf="hmEmailId.errors?.['pattern']  && (hmEmailId.touched||hmEmailId.dirty)">
+                <div class="form-text text-danger"
+                    *ngIf="hmEmailId.errors?.['pattern']  && (hmEmailId.touched||hmEmailId.dirty)">
                     Please enter a valid email</div>
             </div>
         </div>
@@ -129,28 +135,10 @@
                 <label for="skillset1" class="form-label"><b>Primary Skillset</b></label>
             </div>
             <div class="col-75">
-                <select id="skillset1" class="form-control" formControlName="primarySkillSet" #teams (change)="getSelect1Value(teams.value)" style="width: 80%;">
-                    <option value="">Select</option>
-                    <option value="AWS">AWS</option>
-                    <option value="Angular">Angular</option>
-                    <option value="Azure">Azure</option>
-                    <option value="Bash/Shell/Powershell">JavaScript</option>
-                    <option value="C#">C#</option>
-                    <option value="CSS">CSS</option>
-                    <option value="C/C++">C++</option>
-                    <option value="Docker">Docker</option>
-                    <option value="ETL">ETL</option>
-                    <option value="GraphQL">GraphQL</option>
-                    <option value="Java">Java</option>
-                    <option value="Kafka">Kafka</option>
-                    <option value="MongoDB">MongoDB</option>
-                    <option value=".NET">.NET</option>
-                    <option value="PHP">PHP</option>
-                    <option value="Python">Python</option>
-                    <option value="ReactNative">ReactNative</option>
-                    <option value="Salesforce">Salesforce</option>
-                    <option value="Selenium">Selenium</option>
-                    <option value="Snowflake">Snowflake</option>
+                <select required id="skillset1" class="form-control" formControlName="primarySkillSet" #teams
+                    (change)="getSelect1Value(teams.value)" style="width: 80%;" >
+                    <option value="" disabled selected>Select the Primary skillset</option>
+                    <option *ngFor="let s of skills" [value]="s">{{s}}</option>
                 </select>
             </div>
         </div>
@@ -159,27 +147,10 @@
                 <label for="skillset2" class="form-label"><b>Secondary Skillset</b></label>
             </div>
             <div class="col-75">
-                <select id="skillset2" class="form-control" formControlName="secondarySkillSet" #teams1 (change)="getSelect2Value(teams1.value)"style="width: 80%;">
-                    <option value="">Select</option>
-                    <option value="Angular">Angular</option>
-                    <option value="Azure">Azure</option>
-                    <option value="Bash/Shell/Powershell">JavaScript</option>
-                    <option value="C#">C#</option>
-                    <option value="CSS">CSS</option>
-                    <option value="C/C++">C++</option>
-                    <option value="Docker">Docker</option>
-                    <option value="ETL">ETL</option>
-                    <option value="GraphQL">GraphQL</option>
-                    <option value="Java">Java</option>
-                    <option value="Kafka">Kafka</option>
-                    <option value="MongoDB">MongoDB</option>
-                    <option value=".NET">.NET</option>
-                    <option value="PHP">PHP</option>
-                    <option value="Python">Python</option>
-                    <option value="ReactNative">ReactNative</option>
-                    <option value="Salesforce">Salesforce</option>
-                    <option value="Selenium">Selenium</option>
-                    <option value="Snowflake">Snowflake</option>
+                <select required id="skillset2" class="form-control" formControlName="secondarySkillSet" #teams1
+                    (change)="getSelect2Value(teams1.value)" style="width: 80%;">
+                    <option value="" disabled selected>Select the secondary skillset</option>
+                    <option *ngFor="let s1 of skills" [value]="s1">{{s1}}</option>
                 </select>
             </div>
         </div>
@@ -188,27 +159,10 @@
                 <label for="skillset3" class="form-label"><b>Good to have skillset</b></label>
             </div>
             <div class="col-75">
-                <select class="form-control" id="skillset3" formControlName="goodToHaveSkillSet" style="width: 80%;">
-                    <option value="">Select</option>
-                    <option value="Angular">Angular</option>
-                    <option value="Azure">Azure</option>
-                    <option value="Bash/Shell/Powershell">JavaScript</option>
-                    <option value="C#">C#</option>
-                    <option value="CSS">CSS</option>
-                    <option value="C/C++">C++</option>
-                    <option value="Docker">Docker</option>
-                    <option value="ETL">ETL</option>
-                    <option value="GraphQL">GraphQL</option>
-                    <option value="Java">Java</option>
-                    <option value="Kafka">Kafka</option>
-                    <option value="MongoDB">MongoDB</option>
-                    <option value=".NET">.NET</option>
-                    <option value="PHP">PHP</option>
-                    <option value="Python">Python</option>
-                    <option value="ReactNative">ReactNative</option>
-                    <option value="Salesforce">Salesforce</option>
-                    <option value="Selenium">Selenium</option>
-                    <option value="Snowflake">Snowflake</option>
+                <select required class="form-control" id="skillset3" formControlName="goodToHaveSkillSet" #teams2
+                (change)="getSelect3Value(teams2.value)"style="width: 80%;">
+                    <option value="" disabled selected >Select the Good to have skillset</option>
+                    <option *ngFor="let s2 of skills" [value]="s2">{{s2}}</option>
                 </select>
             </div>
         </div>

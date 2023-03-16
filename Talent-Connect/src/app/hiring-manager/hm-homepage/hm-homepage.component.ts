@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import {HiringManagerService} from '../../services/hiringManager';
 
 @Component({
@@ -12,8 +13,10 @@ export class HmHomepageComponent {
 
   constructor(private hm: HiringManagerService) { }
 
-  ngOnInit(): void {
-    this.hm.getJobRequestDetails().subscribe((jobRequest: any) => {
+  onChange(event: MatTabChangeEvent) {
+    const tab = event.tab.textLabel;
+    console.log(tab);
+    this.hm.getJobRequestDetails(tab).subscribe((jobRequest: any) => {
       console.log("jobRequest ====", jobRequest);
       if (jobRequest) {
         this.dataSource = jobRequest

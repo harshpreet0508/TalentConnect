@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, Observable, throwError } from "rxjs";
 import { JobRequest } from "../models/JobRequest.model";
@@ -10,20 +10,12 @@ export class HiringManagerService {
 
   constructor(private http: HttpClient) { }
 
-  getJobRequestDetails(): Observable<JobRequest[]> {
-    return this.http.get<JobRequest[]>(`http://localhost:8080/talentConnect/api/hiringManager/getJobRequestsDetails`).pipe(
+  getJobRequestDetails(jobStatus:any): Observable<JobRequest[]> {
+    const params = new HttpParams().append('jobStatus', jobStatus);
+    this.http.get('url', { params}); 
+    return this.http.get<JobRequest[]>(`http://localhost:8080/talentConnect/api/hiringManager/getJobRequestsDetails`,{params}).pipe(
       catchError((err) => { return throwError(err); })
     );
   }
 
-  saveData(jobRequest: JobRequest): Observable<any> {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
-    return this.http
-      .post(`http://localhost:8080/talentConnect/api/talentAcquisition/saveJobRequestDetails`, jobRequest, {
-        headers, responseType: 'text'
-      })
-      .pipe(catchError((err) => {
-        return throwError(err)
-      }))
-  }
 }

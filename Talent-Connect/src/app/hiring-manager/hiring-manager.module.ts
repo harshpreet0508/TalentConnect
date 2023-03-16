@@ -11,14 +11,15 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
     HmHomepageComponent,
-    JobRequestComponent
+    JobRequestComponent,
   ],
   imports: [
-    CommonModule,RouterModule,MatFormFieldModule,FormsModule,
+    CommonModule,RouterModule,MatFormFieldModule,FormsModule,MatTabsModule,
     ReactiveFormsModule,MatInputModule,MatToolbarModule, MatPaginatorModule, HttpClientModule, MatTableModule,RouterModule
   ]
 })
