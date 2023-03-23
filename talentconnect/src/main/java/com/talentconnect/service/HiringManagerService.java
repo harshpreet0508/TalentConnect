@@ -47,13 +47,17 @@ public class HiringManagerService {
 
 		return mongoTemplate.save(jobRequestDetails, "jobRequest");
 	}
-	public JobRequest updateJobRequestDetails(JobRequest jobRequestDetails,Integer id) {
-
-//		Query query = new Query();
-//		query.addCriteria(Criteria.where("jobId").is(id));
-		JobRequest jobRequest = mongoTemplate.findById(id,JobRequest.class);
-		jobRequest.setAssigned(jobRequestDetails.getAssigned());
-		return jobRequest;
+	public JobRequest updateJobRequestDetails(JobRequest jobRequestDetails) {
+		System.out.println("id"+jobRequestDetails.getJobId());
+		Query query = new Query();
+		query.addCriteria(Criteria.where("jobId").is(jobRequestDetails.getJobId()));
+		JobRequest jobRequest = mongoTemplate.findOne(query,JobRequest.class);
+		System.out.println("grade"+jobRequestDetails.getGrade());
+		jobRequest.setGrade(jobRequestDetails.getGrade());
+		System.out.println("grade set");
+////		jobRequest.setGoodToHaveSkillSet(jobRequestDetails.getGoodToHaveSkillSet());
+		System.out.println("jobRequest.getGrade()"+jobRequest.getGrade());
+		return mongoTemplate.save(jobRequestDetails, "jobRequest");
 	}
 
 }

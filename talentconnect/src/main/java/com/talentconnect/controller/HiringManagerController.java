@@ -34,8 +34,8 @@ public class HiringManagerController {
 	}
 	
 	@PutMapping("/updateJobRequestDetails")
-	public JobRequest updateJobRequestDetails(@RequestParam Integer id,@RequestBody JobRequest jobRequestDetails) {
-		return hiringManagerService.updateJobRequestDetails(jobRequestDetails,id);
+	public JobRequest updateJobRequestDetails(@RequestBody JobRequest jobRequestDetails) {
+		return hiringManagerService.updateJobRequestDetails(jobRequestDetails);
 
 	}
 	

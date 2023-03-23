@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as $ from "jquery";
 import { HiringManagerService } from '../../services/hiringManager';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobRequest } from 'src/app/models/JobRequest.model';
 
 @Component({
@@ -12,7 +12,7 @@ import { JobRequest } from 'src/app/models/JobRequest.model';
   styleUrls: ['./job-request.component.css']
 })
 export class JobRequestComponent {
-  constructor(private hm: HiringManagerService, private http: HttpClient, private activatedRoute: ActivatedRoute) { }
+  constructor(private hm: HiringManagerService, private http: HttpClient, private activatedRoute: ActivatedRoute, private router:Router) { }
 
   food: string[] = ['Steak', 'Pizza', 'Tacos'];
   skills: string[] = ["AWS", "Angular", "Azure", "Bash/Shell/Powershell", "C#", "CSS", "C/C++", "Docker", "ETL", "GraphQL", "Java", "Kafka", "MongoDB", ".NET", "PHP", "Python", "Salesforce", "Selenium", "Snowflake"];
@@ -45,6 +45,7 @@ export class JobRequestComponent {
       .subscribe(status => console.log(JSON.stringify(status)));
     alert("form submitted");
     this.registerForm.reset();
+    this.router.navigate(['hm']);
   }
   getSelect1Value(skillset1: string): void {
     if (skillset1 != '') {

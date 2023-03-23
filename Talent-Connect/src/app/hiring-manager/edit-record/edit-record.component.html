@@ -13,17 +13,17 @@
                 <label for="reqNumber" class="form-label"><b>Requistion number</b></label>
             </div>
             <div class="col-75">
-                <input type="text" id="reqNumber"  class="form-control" name ="reqNumber" [(ngModel)]="jobRequest.reqNumber"
+                <input type="text" id="reqNumber"   name ="reqNumber" [(ngModel)]="jobRequest.reqNumber"
                     placeholder="Enter Requisition No">
             </div>
         </div>
 
         <div class="row">
             <div class="col-25">
-                <label for="grade" class="form-label"><b>Grade</b></label>
+                <label for="grade" ><b>Grade</b></label>
             </div>
             <div class="col-75">
-                <input type="text" id="grade" class="form-control"     placeholder="Enter Grade">
+                <input type="text" id="grade"  name ="grade" [(ngModel)]="jobRequest.grade" placeholder="Enter Grade">
 
             </div>
         </div>
