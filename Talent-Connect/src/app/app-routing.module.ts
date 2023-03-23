@@ -8,6 +8,7 @@ import { PanelistHomeComponent } from './panelist/panelist-home/panelist-home.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ResourceComponent } from './ta-admin/resource/resource.component';
 import { JobRequestComponent } from './hiring-manager/job-request/job-request.component';
+import { EditRecordComponent } from './hiring-manager/edit-record/edit-record.component';
 const routes: Routes = [
   { path: 'home', component: DashboardComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,6 +20,9 @@ const routes: Routes = [
     {
       path:'', 
       component: HmHomepageComponent,
+    },{
+      path:'edit/:id', 
+      component:EditRecordComponent,
     },
   ] },
   { path: 'admin',  children: [

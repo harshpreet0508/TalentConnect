@@ -1,53 +1,53 @@
 export class JobRequest {
 
-	 jobId?: null | number;
+	 public jobId!: number;
 
-	 reqNumber?: null | number;
+	 reqNumber!: number;
 
-	 grade?: null | string;
+	 grade!: string;
 
-	 hmmSId?:  null | string;
+	 hmmSId!: string;
 
-	 hmemployeeId?: null | number;
+	 hmemployeeId!: number;
 
-	 hmEmailId?:  null | string;
+	 hmEmailId!: string;
 
-	 glCode?:  null | string;
+	 glCode!:  string;
 
-	 jdUrl?: null | string;
+	 jdUrl!: string;
 
-	 reqNoOpenings?: null | string;
+	 reqNoOpenings!: string;
 
-	 hmName?: null | string;
+	 hmName!: string;
 
-	 jobStatus?: null | string;
+	 jobStatus!: string;
 
-	 primarySkillSet?: null | string;
+	 primarySkillSet!: string;
 
-	 secondarySkillSet?: null | string;
+	 secondarySkillSet!: string;
 
-	 goodToHaveSkillSet?: null | string;
+	 goodToHaveSkillSet!: string;
 
-	 locationId?: null | number;
+	 locationId!: number;
 
-	 location?: null | string;
+	 location!: string;
 
-	 designation?: null | string;
+	 designation!: string;
 
-	 jobCreatedDate?: null | Date;
+	 jobCreatedDate!: Date;
 
-	 jobCreatedBy?: null | string;
+	 jobCreatedBy!: string;
 
-	 jobLastUpdatedDate?: null | Date;
+	 jobLastUpdatedDate!: Date;
 
-	 jobLastUpdatedBy?: null | string;
+	 jobLastUpdatedBy!: string;
 
-	 comments?: null | string;
+	 comments!: string;
 
-	 assigned?: null | boolean;
+	 assigned!: boolean;
 
-	 taResourceID?: null | string;
+	 taResourceID!: string;
 
-	 taEmailID?: null | string;
+	 taEmailID!: string;
    
 }

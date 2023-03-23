@@ -27,6 +27,13 @@ public class HiringManagerService {
 		return mongoTemplate.find(query,JobRequest.class);
 		
 	}
+	
+	public JobRequest getJobRequestDetailsById(Integer id) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("jobId").is(id));
+		return mongoTemplate.findOne(query,JobRequest.class);
+		
+	}
 	public JobRequest saveJobRequestDetails(JobRequest jobRequestDetails) {
 
 		OptionalLong maxJobRequestID = mongoTemplate.findAll(JobRequest.class).stream()
@@ -39,6 +46,14 @@ public class HiringManagerService {
 		}
 
 		return mongoTemplate.save(jobRequestDetails, "jobRequest");
+	}
+	public JobRequest updateJobRequestDetails(JobRequest jobRequestDetails,Integer id) {
+
+//		Query query = new Query();
+//		query.addCriteria(Criteria.where("jobId").is(id));
+		JobRequest jobRequest = mongoTemplate.findById(id,JobRequest.class);
+		jobRequest.setAssigned(jobRequestDetails.getAssigned());
+		return jobRequest;
 	}
 
 }

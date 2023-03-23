@@ -18,4 +18,15 @@ export class HiringManagerService {
     );
   }
 
+  getJobRequestDetailsById(id:any): Observable<JobRequest> {
+    const params = new HttpParams().append('id', id);
+    this.http.get('url', { params}); 
+    return this.http.get<JobRequest>(`http://localhost:8080/talentConnect/api/hiringManager/getJobRequestsDetailsByID`,{params}).pipe(
+      catchError((err) => { return throwError(err); })
+    );
+  }
+   updateStudents(student: any) {
+    return this.http.put(`http://localhost:8080/talentConnect/api/hiringManager/getJobRequestsDetailsByID` + '/updateStudents', student);
+  }
+
 }

@@ -12,14 +12,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import {MatSelectModule} from '@angular/material/select';
+import { EditRecordComponent } from './edit-record/edit-record.component';
 @NgModule({
   declarations: [
     HmHomepageComponent,
     JobRequestComponent,
+    EditRecordComponent,
   ],
   imports: [
-    CommonModule,RouterModule,MatFormFieldModule,FormsModule,MatTabsModule,
+    CommonModule,RouterModule,MatFormFieldModule,FormsModule,MatTabsModule,MatSelectModule,
     ReactiveFormsModule,MatInputModule,MatToolbarModule, MatPaginatorModule, HttpClientModule, MatTableModule,RouterModule
   ]
 })

@@ -22,7 +22,7 @@ public class HiringManagerController {
 	private HiringManagerService hiringManagerService;
 
 	@GetMapping("/getJobRequestsDetails")
-	public List<JobRequest> getJobRequestDetails(@RequestParam String jobStatus) {
+	public List<JobRequest> getJobRequestDetailsByJobStatus(@RequestParam String jobStatus) {
 		return hiringManagerService.getJobRequestDetailsByJobStatus(jobStatus);
 
 	}
@@ -32,5 +32,18 @@ public class HiringManagerController {
 		return hiringManagerService.saveJobRequestDetails(jobRequestDetails);
 
 	}
+	
+	@PutMapping("/updateJobRequestDetails")
+	public JobRequest updateJobRequestDetails(@RequestParam Integer id,@RequestBody JobRequest jobRequestDetails) {
+		return hiringManagerService.updateJobRequestDetails(jobRequestDetails,id);
+
+	}
+	
+	@GetMapping("/getJobRequestsDetailsByID")
+	public JobRequest getJobRequestDetailsByID(@RequestParam Integer id) {
+		return hiringManagerService.getJobRequestDetailsById(id);
+
+	}
+
 
 }

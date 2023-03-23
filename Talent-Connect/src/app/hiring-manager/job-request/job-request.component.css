@@ -4,7 +4,7 @@
     background-color: #f2f2f2;
     padding: 20px;
     width: 80%;
-    height:100%;
+    height:150%;
   }
 
   .col-25 {
@@ -55,3 +55,6 @@ input[type=submit]:hover {
 option[value=""][disabled] {
   display: none;
 }
+select {
+  -webkit-appearance: listbox !important;
+  }

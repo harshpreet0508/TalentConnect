@@ -114,8 +114,12 @@
                     <input type="radio" class="form-check-input" formControlName="jobStatus" value="Close" id="close">
                     <label class="form-check-label" for="close">Close</label>
                 </div>
+                <div class="form-text text-danger"
+                    *ngIf="jobStatus.errors?.['required']&& (jobStatus.touched||jobStatus.dirty)">
+                    Required</div>
             </div>
         </div>
+        
         <div class="row">
             <div class="col-25">
                 <label for="location" class="form-label"><b>Location</b></label>
@@ -128,20 +132,28 @@
                     <option value="Hyderabad">Hyderabad</option>
                     <option value="Noida">Noida</option>
                 </select>
+                <div class="form-text text-danger"
+                    *ngIf="location.errors?.['required']&& (location.touched||location.dirty)">
+                    Required</div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-25">
                 <label for="skillset1" class="form-label"><b>Primary Skillset</b></label>
             </div>
             <div class="col-75">
-                <select required id="skillset1" class="form-control" formControlName="primarySkillSet" #teams
-                    (change)="getSelect1Value(teams.value)" style="width: 80%;" >
+                <select id="skillset1" name="skillset1" class="form-control" formControlName="primarySkillSet" #teams
+                    (change)="getSelect1Value(teams.value)" style="width: 80%;">
                     <option value="" disabled selected>Select the Primary skillset</option>
                     <option *ngFor="let s of skills" [value]="s">{{s}}</option>
                 </select>
+                <div class="form-text text-danger"
+                    *ngIf="primarySkillSet.errors?.['required']&& (primarySkillSet.touched||primarySkillSet.dirty)">
+                    Required</div>
             </div>
         </div>
+
         <div class="row">
             <div class="col-25">
                 <label for="skillset2" class="form-label"><b>Secondary Skillset</b></label>
@@ -152,6 +164,9 @@
                     <option value="" disabled selected>Select the secondary skillset</option>
                     <option *ngFor="let s1 of skills" [value]="s1">{{s1}}</option>
                 </select>
+                <div class="form-text text-danger"
+                    *ngIf="secondarySkillSet.errors?.['required']&& (secondarySkillSet.touched||secondarySkillSet.dirty)">
+                    Required</div>
             </div>
         </div>
         <div class="row">
@@ -160,16 +175,19 @@
             </div>
             <div class="col-75">
                 <select required class="form-control" id="skillset3" formControlName="goodToHaveSkillSet" #teams2
-                (change)="getSelect3Value(teams2.value)"style="width: 80%;">
-                    <option value="" disabled selected >Select the Good to have skillset</option>
+                    (change)="getSelect3Value(teams2.value)" style="width: 80%;">
+                    <option value="" disabled selected>Select the Good to have skillset</option>
                     <option *ngFor="let s2 of skills" [value]="s2">{{s2}}</option>
                 </select>
+                <div class="form-text text-danger"
+                    *ngIf="goodToHaveSkillSet.errors?.['required']&& (goodToHaveSkillSet.touched||goodToHaveSkillSet.dirty)">
+                    Required</div>
             </div>
         </div>
 
         <br>
         <div style="float:right">
-            <input type="submit" [disabled]="!registerForm.valid" value="Submit">
+            <input type="submit" value="Submit">
         </div>
 
     </form>
