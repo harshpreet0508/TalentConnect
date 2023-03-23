@@ -26,15 +26,12 @@ export class HiringManagerService {
       catchError((err) => { return throwError(err); })
     );
   }
-  //  updateStudents(id:any) : Observable<JobRequest>{
-  //   const params = new HttpParams().append('id', id);
-  //   this.http.get('url', { params}); 
-  //   console.log(id);
-  //   // console.log("ghh",student);
-  //   console.log("ttthttp://localhost:8080/talentConnect/api/hiringManager/updateJobRequestDetails", {params});
-  //   this.http.put<JobRequest>(`http://localhost:8080/talentConnect/api/hiringManager/updateJobRequestDetails`, {params})
-  //   .subscribe(status => console.log(JSON.stringify(status)));
-  //   console.log("form submitted");
-  // }
-
+  deleteJobRequestDetailsById(id:any): Observable<JobRequest> {
+    const params = new HttpParams().append('id', id);
+    this.http.get('url', { params}); 
+    console.log("params",{params});
+    return this.http.delete<any>(`http://localhost:8080/talentConnect/api/hiringManager/deleteJobRequestDetails`,{params}).pipe(
+      catchError((err) => { return throwError(err); })
+    );
+  }
 }

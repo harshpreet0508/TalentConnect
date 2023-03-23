@@ -20,7 +20,7 @@ public class JobRequest {
 
 	private Integer reqNumber;
 
-	private Integer grade;
+	private String grade;
 
 	private String hmmSId;
 	

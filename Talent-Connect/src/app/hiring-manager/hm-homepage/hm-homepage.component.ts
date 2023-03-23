@@ -5,6 +5,7 @@ import { HiringManagerService } from '../../services/hiringManager';
 import { Routes, RouterModule,Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { JobRequest } from 'src/app/models/JobRequest.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-hm-homepage',
@@ -15,12 +16,14 @@ export class HmHomepageComponent {
   dataSource: any;
   displayedColumns: string[] = ['ReqNumber', 'Grade', 'HmEmployeeId', 'HmEmailId', 'HmName', 'Location', 'JobStatus', 'Position', 'PrimarySkillSet', 'SecondarySkillSet', 'GoodToHaveSkillSet','Action'];
 
-  constructor(private hm: HiringManagerService,private router:Router,private route:ActivatedRoute) { 
+  constructor(private hm: HiringManagerService,
+    private router:Router,
+    private route:ActivatedRoute,
+    private http: HttpClient) { 
     this.onChange("Open");
   }
 
   ngOnInit(): void {
-  
   }
  
   onChange(event: any) {
@@ -33,25 +36,15 @@ export class HmHomepageComponent {
     });
   }
 
-  editForm = new FormGroup({
-    reqNumber: new FormControl(null),
-    grade: new FormControl("")
-  });
-  // jobRequest:JobRequest;
-
   edit(id:number){
     this.router.navigate(['hm/edit',id])
   }
-
-  // updateData(){
-  //   this.hm.updateStudents(this.editForm).subscribe(
-  //     (resp) => {
-  //       console.log(resp);
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
-  // get f() { return this.editForm.controls; }
+  delete1(id:number){
+    alert("Are you sure");
+    this.hm.deleteJobRequestDetailsById(id).subscribe(res => {
+      console.log("Success");
+      this.onChange("Open");
+    });
+    
+  }
 }

@@ -1,10 +1,9 @@
-<p>edit-record works!</p>
 <div class="container">
-    <form (ngSubmit)="updateData()">
+    <form [formGroup]="editForm" (ngSubmit)="updateData()">
 
         <div class="row">
             <div class="col text-center p-2 mb-3">
-                <span><b>Job Request Form</b></span>
+                <span><b>Edit Job Request Form</b></span>
             </div>
         </div>
 
@@ -13,24 +12,190 @@
                 <label for="reqNumber" class="form-label"><b>Requistion number</b></label>
             </div>
             <div class="col-75">
-                <input type="text" id="reqNumber"   name ="reqNumber" [(ngModel)]="jobRequest.reqNumber"
-                    placeholder="Enter Requisition No">
+                <input type="text" id="reqNumber" class="form-control" formControlName="reqNumber" name="reqNumber"
+                    [(ngModel)]="jobRequest.reqNumber" placeholder="Enter Requisition No">
+                <div class="form-text text-danger"
+                    *ngIf="reqNumber.errors?.['required']&& (reqNumber.touched||reqNumber.dirty)">
+                    Requisition No is Required</div>
+                <div class="form-text text-danger"
+                    *ngIf="reqNumber.errors?.['pattern']  && (reqNumber.touched||reqNumber.dirty)">
+                    Please enter a 6 digit number</div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-25">
-                <label for="grade" ><b>Grade</b></label>
+                <label for="grade" class="form-label"><b>Grade</b></label>
             </div>
             <div class="col-75">
-                <input type="text" id="grade"  name ="grade" [(ngModel)]="jobRequest.grade" placeholder="Enter Grade">
+                <input type="text" id="grade" class="form-control" formControlName="grade" name="grade"
+                    [(ngModel)]="jobRequest.grade" placeholder="Enter Grade">
+                <div class="form-text text-danger" *ngIf="Grade.errors?.['required']&& (Grade.touched||Grade.dirty)">
+                    Required</div>
+                <div class="form-text text-danger" *ngIf="Grade.errors?.['pattern']  && (Grade.touched||Grade.dirty)">
+                    Please enter a number</div>
+                <div class="form-text text-danger"
+                    *ngIf="(Grade.errors?.['min'] || Grade.errors?.['max']) &&(Grade.touched||Grade.dirty)">Please enter
+                    in range 25-35</div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-25">
+                <label for="position" class="form-label"><b>Position</b></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="position" class="form-control" formControlName="position" name="position"
+                    [(ngModel)]="jobRequest.position" placeholder="Enter Position">
+                <div class="form-text text-danger"
+                    *ngIf="Position.errors?.['required']&& (Position.touched||Position.dirty)">Required</div>
+                <div class="form-text text-danger"
+                    *ngIf="Position.errors?.['pattern']  && (Position.touched||Position.dirty)">Please enter a valid
+                    position</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="eid" class="form-label"><b>Hm Employee id</b></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="eid" class="form-control" formControlName="hmemployeeId" name="hmemployeeId"
+                    [(ngModel)]="jobRequest.hmemployeeId" placeholder="Enter Hm Employee id">
+                <div class="form-text text-danger"
+                    *ngIf="hmemployeeId.errors?.['required']&& (hmemployeeId.touched||hmemployeeId.dirty)">Required
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="hmemployeeId.errors?.['pattern'] && (hmemployeeId.touched||hmemployeeId.dirty)">Please
+                    enter 9 digit number</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="hmEmailId" class="form-label"><b>Hm Email id</b></label>
+            </div>
+            <div class="col-75">
+                <input type="email" id="hmEmailId" class="form-control" formControlName="hmEmailId" name="hmEmailId"
+                    [(ngModel)]="jobRequest.hmEmailId" placeholder="Enter Hm Email id">
+                <div class="form-text text-danger"
+                    *ngIf="hmEmailId.errors?.['required']&& (hmEmailId.touched||hmEmailId.dirty)">
+                    Required</div>
+                <div class="form-text text-danger"
+                    *ngIf="hmEmailId.errors?.['pattern']  && (hmEmailId.touched||hmEmailId.dirty)">
+                    Please enter a valid email</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="hmname" class="form-label"><b>Hm Name</b></label>
+            </div>
+            <div class="col-75">
+                <input type="text" id="hmname" class="form-control" formControlName="hmName" name="hmName"
+                    [(ngModel)]="jobRequest.hmName" placeholder="Enter Hm name">
+                <div class="form-text text-danger" *ngIf="hmName.errors?.['required']&& (hmName.touched||hmName.dirty)">
+                    Required</div>
+                <div class="form-text text-danger"
+                    *ngIf=" hmName.errors?.['pattern']  && (hmName.touched||hmName.dirty)">Please enter a valid name
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="jobstatus" class="form-label"><b>Job Status</b></label>
+            </div>
+            <div class="col-75">
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" formControlName="jobStatus" value="Open" id="open"
+                        name="jobStatus" [(ngModel)]="jobRequest.jobStatus">
+                    <label class="form-check-label" for="open">Open</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" formControlName="jobStatus" value="Close" id="close"
+                        name="jobStatus" [(ngModel)]="jobRequest.jobStatus">
+                    <label class="form-check-label" for="close">Close</label>
+                </div>
+                <div class="form-text text-danger"
+                    *ngIf="jobStatus.errors?.['required']&& (jobStatus.touched||jobStatus.dirty)">
+                    Required</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="location" class="form-label"><b>Location</b></label>
+            </div>
+            <div class="col-75">
+                <select id="location" class="form-control" formControlName="location" style="width: 80%;"
+                    name="location" [(ngModel)]="jobRequest.location">
+                    <option value="">Select</option>
+                    <option value="Banglore">Banglore</option>
+                    <option value="Gurgaon">Gurgaon</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Noida">Noida</option>
+                </select>
+                <div class="form-text text-danger"
+                    *ngIf="location.errors?.['required']&& (location.touched||location.dirty)">
+                    Required</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="skillset1" class="form-label"><b>Primary Skillset</b></label>
+            </div>
+            <div class="col-75">
+                <select id="skillset1" name="skillset1" class="form-control" formControlName="primarySkillSet" #teams
+                    (change)="getSelect1Value(teams.value)" style="width: 80%;" name="primarySkillSet"
+                    [(ngModel)]="jobRequest.primarySkillSet">
+                    <option value="" disabled selected>Select the Primary skillset</option>
+                    <option *ngFor="let s of skills" [value]="s">{{s}}</option>
+                </select>
+                <div class="form-text text-danger"
+                    *ngIf="primarySkillSet.errors?.['required']&& (primarySkillSet.touched||primarySkillSet.dirty)">
+                    Required</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="skillset2" class="form-label"><b>Secondary Skillset</b></label>
+            </div>
+            <div class="col-75">
+                <select required id="skillset2" class="form-control" formControlName="secondarySkillSet" #teams1
+                    (change)="getSelect2Value(teams1.value)" style="width: 80%;" name="secondarySkillSet"
+                    [(ngModel)]="jobRequest.secondarySkillSet">
+                    <option value="" disabled selected>Select the secondary skillset</option>
+                    <option *ngFor="let s1 of skills" [value]="s1">{{s1}}</option>
+                </select>
+                <div class="form-text text-danger"
+                    *ngIf="secondarySkillSet.errors?.['required']&& (secondarySkillSet.touched||secondarySkillSet.dirty)">
+                    Required</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="skillset3" class="form-label"><b>Good to have skillset</b></label>
+            </div>
+            <div class="col-75">
+                <select required class="form-control" id="skillset3" formControlName="goodToHaveSkillSet" #teams2
+                    (change)="getSelect3Value(teams2.value)" style="width: 80%;" name="goodToHaveSkillSet"
+                    [(ngModel)]="jobRequest.goodToHaveSkillSet">
+                    <option value="" disabled selected>Select the Good to have skillset</option>
+                    <option *ngFor="let s2 of skills" [value]="s2">{{s2}}</option>
+                </select>
+                <div class="form-text text-danger"
+                    *ngIf="goodToHaveSkillSet.errors?.['required']&& (goodToHaveSkillSet.touched||goodToHaveSkillSet.dirty)">
+                    Required</div>
             </div>
         </div>
 
         <br>
         <div style="float:right">
-            <input type="submit" value="Submit">
+            <input type="submit" value="Update">
+            
         </div>
 
     </form>

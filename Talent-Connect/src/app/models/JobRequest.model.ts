@@ -1,6 +1,6 @@
 export class JobRequest {
 
-	 public jobId!: number;
+	 jobId!: number;
 
 	 reqNumber!: number;
 
@@ -16,11 +16,13 @@ export class JobRequest {
 
 	 jdUrl!: string;
 
-	 reqNoOpenings!: string;
+	 reqNoOpenings!: number;
 
 	 hmName!: string;
 
 	 jobStatus!: string;
+
+	 position!: string;
 
 	 primarySkillSet!: string;
 

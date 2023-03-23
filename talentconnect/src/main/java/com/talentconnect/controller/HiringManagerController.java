@@ -44,6 +44,12 @@ public class HiringManagerController {
 		return hiringManagerService.getJobRequestDetailsById(id);
 
 	}
+	
+	@DeleteMapping("/deleteJobRequestDetails")
+	public void deleteJobRequestDetails(@RequestParam Integer id) {
+		 hiringManagerService.deleteJobRequestDetails(id);
+
+	}
 
 
 }
