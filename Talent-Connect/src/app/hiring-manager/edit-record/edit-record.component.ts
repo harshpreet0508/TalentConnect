@@ -5,6 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { JobRequest } from 'src/app/models/JobRequest.model';
 import{Router} from '@angular/router'
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class EditRecordComponent {
 
   constructor(private hm: HiringManagerService,
     private http: HttpClient,private router:Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute, private snackBar:MatSnackBar) { }
 
   jobRequest: JobRequest;
   food: string[] = ['Steak', 'Pizza', 'Tacos'];
@@ -34,12 +35,15 @@ export class EditRecordComponent {
     hmEmailId: new FormControl("", [Validators.required, Validators.pattern("^[a-z]+[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
     hmName: new FormControl("", [Validators.required, Validators.pattern("[A-Za-z]{3,}")]),
     jobStatus: new FormControl("", [Validators.required]),
-    primarySkillSet: new FormControl("", [Validators.required]),
+    primarySkillSet: new FormControl([], [Validators.required]),
     secondarySkillSet: new FormControl("", [Validators.required]),
     goodToHaveSkillSet: new FormControl("", [Validators.required]),
     location: new FormControl("", [Validators.required]),
     jobId: new FormControl("")
   });
+  toppings = new FormControl('');
+  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(val => {
@@ -56,6 +60,10 @@ export class EditRecordComponent {
     this.http.put(`http://localhost:8080/talentConnect/api/hiringManager/updateJobRequestDetails`, this.jobRequest)
       .subscribe(status => console.log("json", JSON.stringify(status)));
     console.log("form submitted", this.userid);
+
+    this.snackBar.open("Form Updated!","", {
+      duration: 2000,
+    });  
     this.router.navigate(['hm']);
   }
   getSelect1Value(skillset1: string): void {

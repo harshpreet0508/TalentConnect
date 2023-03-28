@@ -14,6 +14,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
 import { EditRecordComponent } from './edit-record/edit-record.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     HmHomepageComponent,
@@ -22,7 +25,7 @@ import { EditRecordComponent } from './edit-record/edit-record.component';
   ],
   imports: [
     CommonModule,RouterModule,MatFormFieldModule,FormsModule,MatTabsModule,MatSelectModule,
-    ReactiveFormsModule,MatInputModule,MatToolbarModule, MatPaginatorModule, HttpClientModule, MatTableModule,RouterModule
+    ReactiveFormsModule,MatInputModule,MatToolbarModule, MatPaginatorModule, HttpClientModule, MatTableModule,RouterModule,MatSnackBarModule,MatDialogModule
   ]
 })
 export class HiringManagerModule { }
