@@ -61,7 +61,7 @@ export class HmHomepageComponent {
   }
   
   delete1(id:number){
-    let result= prompt("Type Y to confirm delete?");
+    let result= prompt("Type Y to confirm delete?", "Y");
     if (result==="Y" || result==="y"){
     this.hm.deleteJobRequestDetailsById(id).subscribe(res => {
       console.log("Success");

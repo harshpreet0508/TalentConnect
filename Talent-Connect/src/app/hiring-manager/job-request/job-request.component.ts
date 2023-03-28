@@ -5,6 +5,8 @@ import { HiringManagerService } from '../../services/hiringManager';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobRequest } from 'src/app/models/JobRequest.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-job-request',
@@ -12,7 +14,7 @@ import { JobRequest } from 'src/app/models/JobRequest.model';
   styleUrls: ['./job-request.component.css']
 })
 export class JobRequestComponent {
-  constructor(private hm: HiringManagerService, private http: HttpClient, private activatedRoute: ActivatedRoute, private router:Router) { }
+  constructor(private hm: HiringManagerService, private http: HttpClient, private activatedRoute: ActivatedRoute, private router:Router,private snackBar:MatSnackBar) { }
 
   food: string[] = ['Steak', 'Pizza', 'Tacos'];
   skills: string[] = ["AWS", "Angular", "Azure", "Bash/Shell/Powershell", "C#", "CSS", "C/C++", "Docker", "ETL", "GraphQL", "Java", "Kafka", "MongoDB", ".NET", "PHP", "Python", "Salesforce", "Selenium", "Snowflake"];
@@ -43,7 +45,10 @@ export class JobRequestComponent {
     }
     this.http.post('http://localhost:8080/talentConnect/api/talentAcquisition/saveJobRequestDetails', this.registerForm.value)
       .subscribe(status => console.log(JSON.stringify(status)));
-    alert("form submitted");
+
+    this.snackBar.open("Form Submitted successfully!","", {
+        duration: 2000,
+      });  
     this.registerForm.reset();
     this.router.navigate(['hm']);
   }
