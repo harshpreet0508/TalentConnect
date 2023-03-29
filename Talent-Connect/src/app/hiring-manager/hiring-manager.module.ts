@@ -16,6 +16,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { EditRecordComponent } from './edit-record/edit-record.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
+import {NgConfirmModule} from 'ng-confirm-box';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     EditRecordComponent,
   ],
   imports: [
-    CommonModule,RouterModule,MatFormFieldModule,FormsModule,MatTabsModule,MatSelectModule,
+    CommonModule,RouterModule,MatFormFieldModule,FormsModule,MatTabsModule,MatSelectModule,NgConfirmModule, NgToastModule,
     ReactiveFormsModule,MatInputModule,MatToolbarModule, MatPaginatorModule, HttpClientModule, MatTableModule,RouterModule,MatSnackBarModule,MatDialogModule
   ]
 })

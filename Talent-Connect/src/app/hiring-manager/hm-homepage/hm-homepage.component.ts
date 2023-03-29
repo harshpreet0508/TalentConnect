@@ -8,6 +8,8 @@ import { JobRequest } from 'src/app/models/JobRequest.model';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {NgConfirmService} from 'ng-confirm-box';
+import { NgToastService } from 'ng-angular-popup';
 
 
 export interface DialogData {
@@ -28,7 +30,9 @@ export class HmHomepageComponent {
   constructor(private hm: HiringManagerService,
     private router:Router,
     private route:ActivatedRoute,
-    private http: HttpClient, public snackBar:MatSnackBar,public dialog: MatDialog) { 
+    private http: HttpClient, public snackBar:MatSnackBar,public dialog: MatDialog,
+    private confirmService:NgConfirmService,
+    private toast: NgToastService ) { 
     this.onChange("Open");
   }
 
@@ -61,16 +65,29 @@ export class HmHomepageComponent {
   }
   
   delete1(id:number){
-    let result= prompt("Type Y to confirm delete?", "Y");
-    if (result==="Y" || result==="y"){
-    this.hm.deleteJobRequestDetailsById(id).subscribe(res => {
-      console.log("Success");
-      this.onChange("Open");
-    });
-    this.snackBar.open("Action complete", "Record Deleted", {
-      duration: 2000,
-    });
-  }
+// <<<<<<< Updated upstream
+//     let result= prompt("Type Y to confirm delete?", "Y");
+//     if (result==="Y" || result==="y"){
+//     this.hm.deleteJobRequestDetailsById(id).subscribe(res => {
+//       console.log("Success");
+//       this.onChange("Open");
+//     });
+//     this.snackBar.open("Action complete", "Record Deleted", {
+//       duration: 2000,
+//     });
+//   }
+
+    this.confirmService.showConfirm("Are you sure want to Delete?",
+     () => {
+      this.hm.deleteJobRequestDetailsById(id).subscribe(res => {
+        this.toast.success({detail:"SUCCESS",summary:'Delete Successful',duration:3000});
+        this.onChange("Open");
+      });
+    },
+    () => {
+      //do nothing
+    })
+    
     
   }
 }

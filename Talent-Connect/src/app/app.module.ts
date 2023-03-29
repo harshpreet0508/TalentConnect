@@ -22,6 +22,8 @@ import { TAAdminModule } from './ta-admin/ta-admin.module';
 import { TAMemberModule } from './ta-member/ta-member.module';
 import { PanelistModule } from './panelist/panelist.module';
 import { TaAdminService } from './services/TaAdminService';
+import {NgConfirmModule} from 'ng-confirm-box';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { TaAdminService } from './services/TaAdminService';
     MatCardModule,
     MatToolbarModule, MatMenuModule, MatIconModule, AppRoutingModule, TAAdminModule, PanelistModule,
     HiringManagerModule, TAMemberModule, MatTableModule,MatFormFieldModule,FormsModule, ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,NgConfirmModule,NgToastModule,
 
 
   ],

@@ -142,7 +142,7 @@
           <th mat-header-cell *matHeaderCellDef>Action</th>
           <td mat-cell *matCellDef="let element">
             <i type="button" class="fa fa-edit" (click)="edit(element.jobId)" ></i>&nbsp;
-            <i class="fa fa-trash"></i>
+            <i type="button" class="fa fa-trash" (click)="delete1(element.jobId)"></i>&nbsp;
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
